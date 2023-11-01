@@ -1,4 +1,4 @@
-extern my_printf                ;
+extern my_printf, my_readfile   ;
 
 section .data
   hello db "Hello World", 0xA   ;
@@ -8,6 +8,8 @@ section .text
   global _start                 ;
 
 _start:
+  call my_readfile              ;
+  
   ; syscall printf
   mov rsi, hello                ;
   mov rdx, helloLen             ; 
@@ -16,7 +18,7 @@ _start:
   jmp return                    ;
 
 return:
-  ; return program on sistem
+; return program on sistem
   mov rax, 60                   ;
   xor rdi, rdi                  ;
   syscall 
