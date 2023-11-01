@@ -32,8 +32,8 @@ my_readfile:
   mov ecx, [rsp]
 
   ; Verifica se há pelo menos 3 argumentos (incluindo o nome do programa)
-  cmp ecx, 2
-  jb .argc_below_2
+  cmp ecx, 3
+  jb .argc_below_3
 
   ; Obtém o ponteiro para o terceiro argumento (argv[2]) da pilha
   mov rsi, [rsp + 16 + 8]  ; argv[2] está em [rsp + 8 + 16] devido ao layout da pilha
@@ -61,7 +61,7 @@ my_readfile:
   ; ... (seu código para sair ou tratar o erro)
   ret
 
-.argc_below_2:
+.argc_below_3:
   ; Se argc for menor que 3, faça algo ou apenas saia do programa
   xor edi, edi          ; Código de saída 0
   mov eax, EXIT           ; Número da syscall para sys_exit (60)
