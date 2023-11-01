@@ -3,14 +3,24 @@ section .data
   EXIT	equ	60		; the linux EXIT syscall
   STDOUT	equ	1		; the file descriptor for standard output (to print/write to)
 
-  format db "%s", 0xA, 0  ; Formato da string para printf
-  linebreak	db	0x0A	; ASCII character 10, a line break
+  LINEBREAK	db 0x0A	; ASCII character 10, a line break
+  FORMAT_STRING db "%s", 0x0A, 0  ; Formato da string para printf
 
 section .text
   global my_printf, my_readfile
 
 my_printf:
-  mov rdi, format          ; format string
+  ; Calcula o comprimento da string
+  xor rcx, rcx              ; Zera rcx para usar como contador
+.loop:
+  cmp byte [rsi + rcx], 0  ; Compara o próximo byte com '\0' (fim da string)
+  je .end                   ; Se for '\0', a string terminou, então saia do loop
+  inc rcx                   ; Incrementa o contador
+  jmp .loop                 ; Repete o loop para o próximo byte da string
+.end:
+  mov rdx, rcx              ; Move o comprimento da string para rdx
+
+  mov rdi, FORMAT_STRING          ; format string
   mov rax, WRITE                ; sys_write (1)
   mov rdi, STDOUT                ; stdout (1)
   syscall

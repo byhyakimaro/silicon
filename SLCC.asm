@@ -6,7 +6,6 @@ section .data
   STDOUT	equ	1		; the file descriptor for standard output (to print/write to)
 
   hello db "Hello World"        ;
-  helloLen equ $ - hello        ; lenght string pointer
 
 section .text
   global _start                 ;
@@ -16,7 +15,6 @@ _start:
   
   ; syscall printf
   mov rsi, hello                ;
-  mov rdx, helloLen             ; 
   call my_printf                ;
 
   jmp return                    ;
