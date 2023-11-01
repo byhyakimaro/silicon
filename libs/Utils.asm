@@ -1,23 +1,18 @@
-
-sys_write	equ	1		; the linux WRITE syscall
-sys_exit	equ	60		; the linux EXIT syscall
-sys_stdout	equ	1		; the file descriptor for standard output (to print/write to)
-
-length		equ	5		; the length of the string we wish to print (fixed string length of the arguments)
-
 section .data
-  readfile_error db "Error in read file", 0xA   ;
+  WRITE	equ	1		; the linux WRITE syscall
+  EXIT	equ	60		; the linux EXIT syscall
+  STDOUT	equ	1		; the file descriptor for standard output (to print/write to)
+
   format db "%s", 0xA, 0  ; Formato da string para printf
-  readfIle_error_len equ $ - readfile_error            ; lenght string pointer
-  
   linebreak	db	0x0A	; ASCII character 10, a line break
 
 section .text
-global my_printf, my_readfile
+  global my_printf, my_readfile
 
 my_printf:
-  mov rax, 1                ; sys_write (1)
-  mov rdi, 1                ; stdout (1)
+  mov rdi, format          ; format string
+  mov rax, WRITE                ; sys_write (1)
+  mov rdi, STDOUT                ; stdout (1)
   syscall
   
   ret                       ; end
@@ -48,15 +43,16 @@ my_readfile:
   ; Agora rcx contém o tamanho da string em bytes
 
   ; Configura os registradores para a syscall sys_write
-  mov rax, 1            ; Número da syscall para sys_write (1)
-  mov rdi, 1            ; Descritor de arquivo para stdout (1)
+  mov rax, WRITE            ; Número da syscall para sys_write (1)
+  mov rdi, STDOUT            ; Descritor de arquivo para stdout (1)
   mov rdx, rcx          ; Tamanho do dado a ser escrito (tamanho da string)
   syscall               ; Chama o sistema para escrever a string
 
   ; ... (seu código para sair ou tratar o erro)
+  ret
 
 .argc_below_2:
   ; Se argc for menor que 3, faça algo ou apenas saia do programa
   xor edi, edi          ; Código de saída 0
-  mov eax, 60           ; Número da syscall para sys_exit (60)
+  mov eax, EXIT           ; Número da syscall para sys_exit (60)
   syscall               ; Chama o sistema para sair

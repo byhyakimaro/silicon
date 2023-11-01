@@ -1,7 +1,11 @@
 extern my_printf, my_readfile   ;
 
 section .data
-  hello db "Hello World", 0xA   ;
+  WRITE	equ	1		; the linux WRITE syscall
+  EXIT	equ	60		; the linux EXIT syscall
+  STDOUT	equ	1		; the file descriptor for standard output (to print/write to)
+
+  hello db "Hello World"        ;
   helloLen equ $ - hello        ; lenght string pointer
 
 section .text
@@ -19,6 +23,6 @@ _start:
 
 return:
 ; return program on sistem
-  mov rax, 60                   ;
+  mov rax, EXIT                   ;
   xor rdi, rdi                  ;
   syscall 
