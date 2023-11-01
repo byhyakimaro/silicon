@@ -1,10 +1,7 @@
+%include 'env/_data.inc'
 extern my_printf, my_readfile   ;
 
 section .data
-  WRITE	equ	1		; the linux WRITE syscall
-  EXIT	equ	60		; the linux EXIT syscall
-  STDOUT	equ	1		; the file descriptor for standard output (to print/write to)
-
   hello db "Hello World"        ;
 
 section .text

@@ -1,3 +1,5 @@
+%include 'env/_data.inc'
+
 section .data
   WRITE	equ	1		; the linux WRITE syscall
   EXIT	equ	60		; the linux EXIT syscall
