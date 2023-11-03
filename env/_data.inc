@@ -13,6 +13,4 @@ section .data
 
   end_compiler_text_format db 0x0A, "compilation terminated.", 0
 
-  ref_status_error db "faltal error: " ;error status
-
-  argv_error_ref db "no input files" ; error argv file
+  ref_status_error db "faltal error: no input files", 0x0A, 0  ;error status

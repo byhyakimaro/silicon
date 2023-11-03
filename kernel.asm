@@ -2,17 +2,18 @@
 extern my_printf, my_readfile, process_end
 
 section .data
-  hello db "Hello World"        ;
+  hello db "Hello World"
 
 section .text
-  global _start                 ;
+  global _start
 
 _start:
-  call my_readfile              ;
+  call my_readfile
   
   ; syscall printf
-  mov rsi, hello                ;
-  call my_printf                ;
+  mov rsi, hello
+  call my_printf
 
-  xor rdi, rdi                  ; program exit 0
-  jmp process_end               ;
+  ; program exit 0
+  xor rdi, rdi              
+  jmp process_end
