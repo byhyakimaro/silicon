@@ -6,4 +6,5 @@ section .data
   STDOUT	equ	1		; the file descriptor for standard output (to print/write to)
 
   LINEBREAK	db 0x0A	; ASCII character 10, a line break
-  FORMAT_STRING db "%s", 0x0A, 0  ; Formato da string para printf
+  FORMAT_STRING db "%s", 0x0A, 0  ; Format string printf
+  ref_count dd 0                   ; count referenc
