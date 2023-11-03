@@ -11,8 +11,8 @@ _start:
   call my_readfile
   
   ; syscall printf
-  mov rsi, hello
-  call my_printf
+  ;mov rsi, hello
+  ;call my_printf
 
   ; program exit 0
   xor rdi, rdi              
