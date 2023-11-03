@@ -7,7 +7,9 @@ section .data
 
   LINEBREAK	db 0x0A	; ASCII character 10, a line break
   FORMAT_STRING db "%s", 0x0A, 0  ; Format string printf
+  
   ref_count dd 0                   ; count reference
+  saved_ptr dq 0                 ; register save and refactory
 
   end_compiler_text_format db 0x0A, "compilation terminated.", 0
 

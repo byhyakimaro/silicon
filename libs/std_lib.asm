@@ -6,6 +6,7 @@ section .text
 
 process_end:
   ; [rdi: status number exit]
+  mov qword [saved_ptr], rdi
 
   mov rsi, end_compiler_text_format
   
@@ -15,6 +16,7 @@ process_end:
   mov rdi, STDOUT
   syscall
 
+  mov rdi, qword [saved_ptr]
+
   mov rax, EXIT
-  xor rdi, rdi
   syscall

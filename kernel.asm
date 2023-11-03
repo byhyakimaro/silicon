@@ -14,4 +14,5 @@ _start:
   mov rsi, hello                ;
   call my_printf                ;
 
+  xor rdi, rdi                  ; program exit 0
   jmp process_end               ;
