@@ -4,7 +4,7 @@ section .text
   global my_printf, my_readfile, len_rsi
 
 len_rsi:
-  ; Calcula o comprimento da string
+  ;args [rsi: string]
   xor rcx, rcx              ; Zera rcx para usar como contador
 .loop:
   cmp byte [rsi + rcx], 0  ; Compara o próximo byte com '\0' (fim da string)
