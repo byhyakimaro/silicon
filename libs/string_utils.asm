@@ -1,4 +1,5 @@
 %include 'env/_data.inc'
+extern error_argv
 
 section .text
   global my_printf, my_readfile, len_rsi
@@ -29,11 +30,11 @@ my_printf:
 
 my_readfile:
   ; Obtém argc do topo da pilha (em [rsp])
-  mov ecx, [rsp]
+  mov ecx, [rsp+16+8]
 
   ; Verifica se há pelo menos 3 argumentos (incluindo o nome do programa)
   cmp ecx, 3
-  jb .argc_below_3
+  jb error_argv
 
   ; Obtém o ponteiro para o terceiro argumento (argv[2]) da pilha
   mov rsi, [rsp + 16 + 8]  ; argv[2] está em [rsp + 8 + 16] devido ao layout da pilha
@@ -46,9 +47,3 @@ my_readfile:
 
   ; ... (seu código para sair ou tratar o erro)
   ret
-
-.argc_below_3:
-; return program on sistem
-  mov rax, EXIT                   ;
-  xor rdi, rdi                  ;
-  syscall             ; Chama o sistema para sair

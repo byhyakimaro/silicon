@@ -24,7 +24,7 @@ clean:
 	rm -rf $(BUILD_DIR)
 
 gdb:
-	gdb $(BUILD_DIR)/$(TARGET)
+	gdb $(BUILD_DIR)/$(O_EXIT)
 
 require:
 	apt-get update -y && apt-get upgrade -y
