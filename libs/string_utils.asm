@@ -1,7 +1,7 @@
 %include 'env/_data.inc'
 
 section .text
-  global my_printf, my_readfile
+  global my_printf, my_readfile, len_rsi
 
 len_rsi:
   ; Calcula o comprimento da string
@@ -48,7 +48,7 @@ my_readfile:
   ret
 
 .argc_below_3:
-  ; Se argc for menor que 3, faça algo ou apenas saia do programa
-  xor edi, edi          ; Código de saída 0
-  mov eax, EXIT           ; Número da syscall para sys_exit (60)
-  syscall               ; Chama o sistema para sair
+; return program on sistem
+  mov rax, EXIT                   ;
+  xor rdi, rdi                  ;
+  syscall             ; Chama o sistema para sair

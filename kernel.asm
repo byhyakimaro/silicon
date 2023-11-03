@@ -1,5 +1,5 @@
 %include 'env/_data.inc'
-extern my_printf, my_readfile   ;
+extern my_printf, my_readfile, process_end
 
 section .data
   hello db "Hello World"        ;
@@ -14,10 +14,4 @@ _start:
   mov rsi, hello                ;
   call my_printf                ;
 
-  jmp return                    ;
-
-return:
-; return program on sistem
-  mov rax, EXIT                   ;
-  xor rdi, rdi                  ;
-  syscall 
+  jmp process_end               ;
