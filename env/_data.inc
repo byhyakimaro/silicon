@@ -11,6 +11,6 @@ section .data
   ref_count dd 0                   ; count reference
   saved_ptr dq 0                 ; register save and refactory
 
-  end_compiler_text_format db 0x0A, "compilation terminated.", 0
+  end_compiler_text_format db 0x0A, "compilation terminated.", 0x0A, 0
 
   ref_status_error db "faltal error: no input files", 0x0A, 0  ;error status
