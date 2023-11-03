@@ -15,7 +15,9 @@ len_rsi:
   mov rdx, rcx              ; Move o comprimento da string para rdx
   ret
 
-my_printf:
+
+my_printf:     
+  ;args [rsi: string]
   call len_rsi
 
   mov rdi, FORMAT_STRING          ; format string
