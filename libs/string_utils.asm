@@ -30,14 +30,15 @@ my_printf:
 
 my_readfile:
   ; Obtém argc do topo da pilha (em [rsp])
-  mov ecx, [rsp+16+8]
+  ; cada argumento fica na ordem a cada 8 bits / 24 = 3 byte de argumento
+  mov ecx, [rsp+24]
 
   ; Verifica se há pelo menos 3 argumentos (incluindo o nome do programa)
   cmp ecx, 3
   jb error_argv
 
   ; Obtém o ponteiro para o terceiro argumento (argv[2]) da pilha
-  mov rsi, [rsp + 16 + 8]  ; argv[2] está em [rsp + 8 + 16] devido ao layout da pilha
+  mov rsi, [rsp+24]  ; argv[2] está em [rsp + 8 + 16] devido ao layout da pilha
 
   call len_rsi
   
