@@ -22,6 +22,6 @@ segment readable writeable
   exit_c db 'compiler ended process',0xA
   exit_c_sz = $-exit_c
   
-  filename db 'test/script.sl', 0
+  filename db 'script.sl', 0
   buffer rb 1024
   ch_file dd 0
