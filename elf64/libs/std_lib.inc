@@ -14,6 +14,7 @@ macro read fd, buf, count
   mov rdi, fd
   mov rsi, buf
   mov rdx, count
+  syscall
 }
 
 macro exit code
