@@ -16,7 +16,7 @@ main:
   cmp rdi, 0
   jl .error_open
 
-  read rdi, buffer, 1024
+  read rdi, buffer, buffer_sz
   
   write STDOUT, buffer, rax
   close rdi
@@ -28,5 +28,5 @@ segment readable writeable
   exit_c_sz = $-exit_c
   
   filename db 'script.sl', 0
-  buffer rb 1024
-  ch_file dd 0
+  buffer db buffer_size  
+  buffer_sz = 100
