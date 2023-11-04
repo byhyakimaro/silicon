@@ -1,19 +1,13 @@
-%include 'env/_data.inc'
-extern my_printf, my_readfile, process_end
+format ELF64 executable
 
-section .data
-  hello db "Hello World"
+include 'libs/std_lib.inc'
 
-section .text
-  global _start
+segment readable executable
+entry main
+main:
+  write STDOUT, msg, msg_lenght
+  exit 0
 
-_start:
-  call my_readfile
-  
-  ; syscall printf
-  ;mov rsi, hello
-  ;call my_printf
-
-  ; program exit 0
-  xor rdi, rdi              
-  jmp process_end
+segment readable writeable
+  msg db 'Hello 64-bit world!',0xA
+  msg_lenght = $-msg

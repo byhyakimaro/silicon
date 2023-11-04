@@ -1,21 +1,13 @@
-AS=nasm
-ASFLAGS=-f elf64 -g
+AS=fasm
 
 BUILD_DIR=build
 TARGET=kernel
 O_EXIT=slcc
 
-LIB_ASM_FILES=$(wildcard libs/*.asm)
-LIB_OBJ_FILES=$(patsubst libs/%.asm,$(BUILD_DIR)/%.o,$(LIB_ASM_FILES))
-
 all: $(TARGET)
 
-$(TARGET): $(TARGET).asm $(LIB_OBJ_FILES) | $(BUILD_DIR)
-	$(AS) $(ASFLAGS) -o $(BUILD_DIR)/$(TARGET).o $(TARGET).asm
-	ld -o $(BUILD_DIR)/$(O_EXIT) $(BUILD_DIR)/$(TARGET).o $(LIB_OBJ_FILES)
-
-$(LIB_OBJ_FILES): $(BUILD_DIR)/%.o : libs/%.asm | $(BUILD_DIR)
-	$(AS) $(ASFLAGS) -o $@ $<
+$(TARGET): $(TARGET).asm | $(BUILD_DIR)
+	$(AS) $(TARGET).asm $(BUILD_DIR)/$(O_EXIT) && chmod +x $(BUILD_DIR)/$(O_EXIT)
 
 $(BUILD_DIR):
 	mkdir -p $(BUILD_DIR)
@@ -28,4 +20,4 @@ gdb:
 
 require:
 	apt-get update -y && apt-get upgrade -y
-	apt install -y nasm binutils
+	apt install -y binutils fasm
