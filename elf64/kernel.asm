@@ -20,6 +20,7 @@ main:
   cmp rax, 0
   jle error_open
   
+  mov byte [buffer + rax], 0
   write STDOUT, buffer, rax
   close rdi
 
