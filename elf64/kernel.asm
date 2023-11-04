@@ -16,10 +16,10 @@ main:
   cmp rdi, 0
   jl .error_open
 
-  read rdi, buffer, buffer_sz
+  ;read rdi, buffer, buffer_sz
   
-  write STDOUT, buffer, rax
-  close rdi
+  ;write STDOUT, buffer, rax
+  ;close rdi
 
   write STDOUT, exit_c, exit_c_sz
   exit 0
@@ -33,6 +33,6 @@ segment readable writeable
   
   buffer rb 1024
   buffer_sz = $-buffer
-  
+
   filename db 'script.sl', 0
   ch_file dd 0
