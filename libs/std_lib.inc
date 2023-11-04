@@ -13,7 +13,7 @@ macro write fd, buf, count
 
 macro exit code
 {
-  mov eax, SYS_EXIT
+  mov rax, SYS_EXIT
   mov rdi, code
   syscall
 }
