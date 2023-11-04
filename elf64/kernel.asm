@@ -11,12 +11,12 @@ segment readable executable
 entry main
 main:
   open filename, O_RDONLY, ch_file
-  write STDOUT, exit_c, exit_c_lenght
+  write STDOUT, exit_c, exit_c_sz
   exit 0
 
 segment readable writeable
   exit_c db 'compiler ended process',0xA
-  exit_c_lenght = $-exit_c
+  exit_c_sz = $-exit_c
   
   filename db 'test/script.sl', 0x10
   ch_file dd 0664
