@@ -17,7 +17,6 @@ main:
   jl error_open
 
   read rdi, buffer, buffer_size
-  int3
   cmp rax, 0
   jl error_open
   
