@@ -1,14 +1,18 @@
 format ELF64 executable
 
 include 'libs/references.inc'
+include 'libs/parse_error.inc'
 include 'libs/std_lib.inc'
 include 'libs/fs_lib.inc'
+
+buffer_size equ 1024
+buffer rb buffer_size
 
 segment readable executable
 entry main
 main:
   write STDOUT, msg, msg_lenght
-  open filename, O_RDONLY, mode
+  open filename, O_RDONLY, chmod
   exit 0
 
 segment readable writeable
@@ -16,4 +20,4 @@ segment readable writeable
   msg_lenght = $-msg
   
   filename db 'test/script.sl', 0x10
-  mode dd 0664  ; Permissões de arquivo: rw-rw-r--
+  chmod dd 0664
