@@ -18,7 +18,7 @@ main:
 
   read rdi, buffer, buffer_size
   int3
-  cmp rsi, 0
+  cmp rax, 0
   jl error_open
   
   write STDOUT, buffer, rax
