@@ -16,14 +16,8 @@ macro write fd, buf, count
   syscall
 }
 
-macro exit fd, buf, count, code
+macro code
 {
-  mov rax, SYS_WRITE
-  mov rdi, fd
-  mov rsi, buf
-  mov rdx, count
-  syscall
-
   mov rax, SYS_EXIT
   mov rdi, code
   syscall

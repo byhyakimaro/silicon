@@ -10,9 +10,9 @@ buffer rb buffer_size
 segment readable executable
 entry main
 main:
-  ;write STDOUT, msg, msg_lenght
   open filename, O_RDONLY, chmod
-  exit STDOUT, exit_c, exit_c_lenght, 0
+  write STDOUT, exit_c, exit_c_lenght
+  exit 0
 
 segment readable writeable
   exit_c db 'compiler ended process',0xA
