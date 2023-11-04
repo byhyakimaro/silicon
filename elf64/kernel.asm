@@ -18,7 +18,7 @@ main:
 
   read rdi, buffer, buffer_size
   cmp rax, 0
-  jl error_open
+  jle error_open
   
   write STDOUT, buffer, rax
   close rdi
@@ -31,7 +31,7 @@ segment readable writeable
   exit_c_sz = $-exit_c
 
   err_open db 'error open file',0xA
-  err_open_sz = $-exit_c
+  err_open_sz = $-err_open
 
   filename db 'script.sl', 0
   buffer_size = 1024
