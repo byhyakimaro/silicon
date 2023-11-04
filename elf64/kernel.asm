@@ -9,8 +9,13 @@ entry main
 main:
   write STDOUT, exit_c, exit_c_sz
   
+  .error_open:
+    exit -1
   open filename, O_RDONLY, ch_file
   mov rdi, rax
+  cmp rdi, 0
+  jl .error_open
+
   read rdi, buffer, 1024
   
   write STDOUT, buffer, rax
