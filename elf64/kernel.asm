@@ -11,7 +11,8 @@ main:
   
   open filename, O_RDONLY, ch_file
   mov rdi, rax
-  read rdi, buffer, 100
+  read rdi, buffer, 1024
+  
   write STDOUT, buffer, rax
   close rdi
 
@@ -22,5 +23,5 @@ segment readable writeable
   exit_c_sz = $-exit_c
   
   filename db 'test/script.sl', 0
-  buffer rb 100 
+  buffer rb 1024
   ch_file dd 0
