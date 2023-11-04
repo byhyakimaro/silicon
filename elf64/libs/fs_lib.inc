@@ -1,8 +1,3 @@
-O_RDONLY = 0
-O_WRONLY = 1
-O_RDWR = 2
-
-SYS_OPEN = 2
 
 macro open filename, flag, mode 
 {
@@ -10,5 +5,12 @@ macro open filename, flag, mode
   mov rdi, filename
   mov rsi, flag
   mov rdx, mode
+  syscall
+}
+
+macro close fd
+{
+  mov rax, SYS_CLOSE
+  mov rdi, fd
   syscall
 }
