@@ -1,0 +1,5 @@
+
+macro len_str
+{
+  
+}

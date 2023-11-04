@@ -19,4 +19,4 @@ segment readable writeable
   exit_c_lenght = $-exit_c
   
   filename db 'test/script.sl', 0x10
-  chmod dd 0664
+  file_ch dd 0664
