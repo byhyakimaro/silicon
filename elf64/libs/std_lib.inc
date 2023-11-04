@@ -16,7 +16,7 @@ macro write fd, buf, count
   syscall
 }
 
-macro code
+macro exit code
 {
   mov rax, SYS_EXIT
   mov rdi, code
