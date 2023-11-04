@@ -10,7 +10,7 @@ buffer rb buffer_size
 segment readable executable
 entry main
 main:
-  open filename, O_RDONLY, chmod
+  open filename, O_RDONLY, ch_file
   write STDOUT, exit_c, exit_c_lenght
   exit 0
 
@@ -19,4 +19,4 @@ segment readable writeable
   exit_c_lenght = $-exit_c
   
   filename db 'test/script.sl', 0x10
-  file_ch dd 0664
+  ch_file dd 0664
