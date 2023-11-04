@@ -1,5 +1,0 @@
-
-macro len_str
-{
-  
-}
