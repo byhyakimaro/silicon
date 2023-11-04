@@ -12,7 +12,7 @@ macro write fd, buf, count
   mov rax, SYS_WRITE
   mov rdi, fd
   mov rsi, buf
-  mov rdx, count    
+  mov rdx, count
   syscall
 }
 
