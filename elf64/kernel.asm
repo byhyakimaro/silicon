@@ -12,12 +12,14 @@ error_open:
 segment readable executable
 entry main
 main:
-  ;stat filename, ptr_to_memory
   open filename, O_RDONLY, ch_file
   mov rdi, rax
   cmp rdi, 0
   jl error_open
 
+  stat filename, ptr_to_memory
+  int3
+  
   read rdi, buffer, buffer_size
   cmp rax, 0
   jle error_open
