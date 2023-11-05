@@ -36,7 +36,7 @@ main:
   exit 0
 
 segment readable writeable
-  exit_c db 'compiler ended process', 0xA
+  exit_c db  0xA, 'compiler ended process', 0xA
   exit_c_sz = $-exit_c
 
   err_open db 'error open file', 0xA
