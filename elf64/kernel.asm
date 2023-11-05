@@ -1,6 +1,7 @@
 format ELF64 executable
 
 include 'libs/references.inc'
+include 'libs/std_io.inc'
 include 'libs/std_uni.inc'
 include 'libs/std_lib.inc'
 include 'libs/std_libfc.inc'
