@@ -19,7 +19,7 @@ macro read fd, buf, count
   ;size of content
   xor rcx, rcx
   .loop:
-    cmp byte [buffer + rcx], 0
+    cmp byte [buf + rcx], 0
     je .done
     inc rcx
     jmp .loop
