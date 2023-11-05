@@ -22,9 +22,9 @@ main:
   cmp rax, 0
   jle error_open
 
-  ;malloc ptr_to_memory, buffer_size
-  ;int3
-  ;free ptr_to_memory
+  malloc ptr_to_memory, 100
+  free ptr_to_memory
+  int3
 
   write STDOUT, buffer, rcx
   close rdi
