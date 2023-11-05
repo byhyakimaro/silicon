@@ -8,7 +8,7 @@ macro open filename, flag, mode
   syscall
 }
 
-macro stat filename, stat_data
+macro stat filename, struct
 {
   mov rax, SYS_STAT
   mov rdi, filename
