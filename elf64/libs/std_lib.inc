@@ -5,3 +5,4 @@ macro exit code
   mov rdi, code
   syscall
 }
+

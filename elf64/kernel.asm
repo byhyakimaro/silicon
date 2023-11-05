@@ -21,15 +21,6 @@ main:
   read rdi, buffer, buffer_size
   cmp rax, 0
   jle error_open
-  
-  ;size of content
-  xor rcx, rcx
-  .loop:
-    cmp byte [buffer + rcx], 0
-    je .done
-    inc rcx
-    jmp .loop
-  .done:
 
   ;malloc ptr_to_memory, buffer_size
   ;int3
