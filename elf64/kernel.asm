@@ -31,12 +31,12 @@ main:
   exit 0
 
 segment readable writeable
+  filename db 'script.sl', 0
+  ch_file dd 0
+
   err_open db 'error open file', 0xA
   err_open_sz = $-err_open
 
-  ptr_to_memory dq 0
-
-  filename db 'script.sl', 0
   buffer_size = 1024
   buffer rb buffer_size
-  ch_file dd 0
+  ptr_to_memory dq 0
