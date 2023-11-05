@@ -1,7 +1,6 @@
 format ELF64 executable
 
 include 'libs/references.inc'
-include 'libs/std_io.inc'
 include 'libs/std_lib.inc'
 
 error_open:
