@@ -31,14 +31,9 @@ main:
 
   write STDOUT, buffer, rcx
   close rdi
-
-  write STDOUT, exit_c, exit_c_sz
   exit 0
 
 segment readable writeable
-  exit_c db  0xA, 'compiler ended process', 0xA
-  exit_c_sz = $-exit_c
-
   err_open db 'error open file', 0xA
   err_open_sz = $-err_open
 
