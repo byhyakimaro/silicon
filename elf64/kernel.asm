@@ -1,8 +1,8 @@
 format ELF64 executable
 
 include 'libs/references.inc'
+include 'libs/std_io.inc'
 include 'libs/std_lib.inc'
-include 'libs/fs_lib.inc'
 
 error_open:
   write STDOUT, err_open, err_open_sz
