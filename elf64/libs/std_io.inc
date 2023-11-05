@@ -32,10 +32,3 @@ macro read fd, buf, count
   mov rdx, count
   syscall
 }
-
-macro exit code
-{
-  mov rax, SYS_EXIT
-  mov rdi, code
-  syscall
-}
