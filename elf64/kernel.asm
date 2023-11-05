@@ -1,9 +1,9 @@
 format ELF64 executable
 
 include 'libs/references.inc'
-include 'libs/std_lib.inc'
 include 'libs/std_uni.inc'
-include 'libs/std_fc.inc'
+include 'libs/std_lib.inc'
+include 'libs/std_libfc.inc'
 
 error_open:
   write STDOUT, err_open, err_open_sz
