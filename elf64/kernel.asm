@@ -24,7 +24,6 @@ main:
 
   malloc ptr_to_memory, 100
   free ptr_to_memory
-  int3
 
   write STDOUT, buffer, rcx
   close rdi
