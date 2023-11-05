@@ -12,6 +12,7 @@ error_open:
 segment readable executable
 entry main
 main:
+  ;stat filename, ptr_to_memory
   open filename, O_RDONLY, ch_file
   mov rdi, rax
   cmp rdi, 0
@@ -30,6 +31,10 @@ main:
     jmp .loop
   .done:
 
+  ;malloc ptr_to_memory, buffer_size
+  ;int3
+  ;free ptr_to_memory
+
   write STDOUT, buffer, rcx
   close rdi
   exit 0
@@ -37,6 +42,8 @@ main:
 segment readable writeable
   err_open db 'error open file', 0xA
   err_open_sz = $-err_open
+
+  ptr_to_memory dq 0
 
   filename db 'script.sl', 0
   buffer_size = 1024
