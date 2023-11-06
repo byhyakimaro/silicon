@@ -10,10 +10,16 @@ macro open filename, flag, mode
 
 macro stat filename, struct
 {
+  push rdi
+  push rsi
+
   mov rax, SYS_STAT
   mov rdi, filename
   mov rsi, struct
   syscall
+  
+  pop rdi
+  pop rsi
 }
 
 macro close fd
