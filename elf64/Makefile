@@ -15,8 +15,8 @@ $(BUILD_DIR):
 clean:
 	rm -rf $(BUILD_DIR)
 
-run:
-	gdb $(BUILD_DIR)/$(O_EXIT)
+gdb:
+	gdb -batch -ex "run" $(BUILD_DIR)/$(O_EXIT)
 
 require:
 	apt-get update -y && apt-get upgrade -y
