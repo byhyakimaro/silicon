@@ -1,8 +1,8 @@
 AS=fasm
 
 BUILD_DIR=build
-TARGET=kernel
-O_EXIT=slcc
+TARGET=core
+O_EXIT=asc
 
 all: $(TARGET)
 
@@ -15,9 +15,9 @@ $(BUILD_DIR):
 clean:
 	rm -rf $(BUILD_DIR)
 
-gdb:
+run:
 	gdb $(BUILD_DIR)/$(O_EXIT)
 
 require:
 	apt-get update -y && apt-get upgrade -y
-	apt install -y binutils fasm
+	apt install -y binutils fasm gdb
